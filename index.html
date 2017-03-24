@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- NAME: Prabhjot Dev -->
+<html>
+<head>
+<style>
+div.dice{
+	float:left;
+  text-align:center;
+  margin:5px;
+  padding:10px;
+  width:32px;
+	background-color: yellow;
+	border:#999 1px solid;
+	font-size:24px;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+th, td {
+    padding: 5px;
+}
+th {
+    text-align: center;
+}
+</style>
+</head>
+<body>
+	<div id="die1" class="dice">0</div>
+	<button id="myBtn" onclick="rollDice()">Roll Dice</button>
+	<h2 id="status" style="clear:left;"></h2>
+		<table style="40%">
+			<tr>
+				<th>Face</th>
+				<th>Frequency</th>
+			</tr>
+			<tr>
+		    <td>1</td>
+		    <td id="one"></td>
+		  </tr>
+		  <tr>
+		    <td>2</td>
+		    <td id="two"></td>
+		  </tr>
+		  <tr>
+		    <td>3</td>
+		    <td id="three"></td>
+		  </tr>
+		  <tr>
+		    <td>4</td>
+		    <td id="four"></td>
+		  </tr>
+		  <tr>
+		    <td>5</td>
+		    <td id="five"></td>
+		  </tr>
+		  <tr>
+		    <td>6</td>
+		    <td id="six"></td>
+		  </tr>
+		</table>
+
+<script>
+	var user = prompt("Enter number of times to roll: ")
+	var numOne=0;
+  var numTwo=0;
+  var numThree=0;
+	var numFour=0;
+	var numFive=0;
+	var numSix=0;
+
+  var num1 = document.getElementById("one");
+  var num2 = document.getElementById("two");
+  var num3 = document.getElementById("three");
+	var num4 = document.getElementById("four");
+	var num5 = document.getElementById("five");
+	var num6 = document.getElementById("six");
+
+	function rollDice(){
+		for (var i = 0; i<parseInt(user); i++) {
+		var die1 = document.getElementById("die1");
+		var status = document.getElementById("status");
+		var d1 = Math.floor(Math.random() * 6) + 1;
+		die1.innerHTML = d1;
+		status.innerHTML = "last number you rolled was "+d1+".";
+
+		console.log(d1);
+		document.getElementById("myBtn").disabled = true;
+
+		if(d1==1){
+      numOne++;
+    }else if (d1==2) {
+      numTwo++;
+    }else if (d1==3) {
+      numThree++;
+    }else if(d1==4){
+			numFour++;
+		}else if(d1==5){
+			numFive++;
+		}else if(d1==6){
+			numSix++;
+		}
+
+		num1.innerHTML = numOne;
+		num2.innerHTML = numTwo;
+		num3.innerHTML = numThree;
+		num4.innerHTML = numFour;
+		num5.innerHTML = numFive;
+		num6.innerHTML = numSix;
+    }
+}
+</script>
+</body>
+</html>
